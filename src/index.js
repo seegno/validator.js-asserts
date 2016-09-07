@@ -25,6 +25,7 @@ import Ip from './asserts/ip-assert.js';
 import Iso3166Country from './asserts/iso-3166-country-assert.js';
 import Json from './asserts/json-assert.js';
 import NotEmpty from './asserts/not-empty-assert.js';
+import NullOr from './asserts/null-or-assert.js';
 import NullOrDate from './asserts/null-or-date-assert.js';
 import NullOrString from './asserts/null-or-string-assert.js';
 import Phone from './asserts/phone-assert.js';
@@ -63,6 +64,7 @@ export default {
   Iso3166Country,
   Json,
   NotEmpty,
+  NullOr,
   NullOrDate,
   NullOrString,
   Phone,
