@@ -36,6 +36,7 @@ describe('validator.js-asserts', () => {
       'Iso3166Country',
       'Json',
       'NotEmpty',
+      'NullOr',
       'NullOrDate',
       'NullOrString',
       'Phone',
