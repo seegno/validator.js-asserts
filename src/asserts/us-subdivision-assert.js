@@ -127,12 +127,7 @@ module.exports = function usSubdivisionAssert({ categories: categories = keys, a
       code = value.substr(-2);
     }
 
-    const result = chain(subdivisions)
-      .pick(this.categories)
-      .values()
-      .flatten()
-      .includes(code)
-      .value();
+    const result = chain(subdivisions).pick(this.categories).values().flatten().includes(code).value();
 
     if (result !== true) {
       throw new Violation(this, value);

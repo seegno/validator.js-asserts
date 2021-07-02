@@ -27,7 +27,7 @@ module.exports = function usZipCodeAssert() {
    * Validation algorithm.
    */
 
-  this.validate = function(value) {
+  this.validate = function (value) {
     if (typeof value !== 'string') {
       throw new Violation(this, value, { value: Validator.errorCode.must_be_a_string });
     }

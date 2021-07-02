@@ -32,11 +32,11 @@
   ],
   "main": "./src/index.js",
   "scripts": {
-    "changelog": "github_changelog_generator --header-label='# Changelog' --future-release=v$npm_config_future_release && sed -i '' -e :a -e '$d;N;2,4ba' -e 'P;D' CHANGELOG.md",
-    "coverage": "yarn test --coverage",
-    "lint": "eslint src test",
-    "test": "jest",
-    "version": "npm run changelog --future-release=$npm_package_version && git add -A CHANGELOG.md"
+    "changelog": "uphold-scripts changelog $npm_package_version",
+    "lint": "uphold-scripts lint",
+    "release": "uphold-scripts release",
+    "test": "uphold-scripts test --coverage",
+    "version": "uphold-scripts version"
   },
   "dependencies": {
     "lodash": "^4.17.21",
@@ -46,17 +46,14 @@
     "abavalidator": "^2.0.1",
     "bignumber.js": "^9.0.0",
     "creditcard": "^0.1.2",
-    "eslint": "^6.5.1",
-    "eslint-config-uphold": "^1.0.1",
     "google-libphonenumber": "^1.0.18",
     "iban": "0.0.6",
     "isoc": "0.0.1",
-    "jest": "^24.9.0",
     "moment": "^2.13.0",
-    "prettier": "^1.18.2",
-    "sinon": "^1.15.4",
+    "sinon": "^11.1.1",
     "tin-validator": "^1.0.0",
     "uk-modulus-checking": "0.0.3",
+    "uphold-scripts": "^0.5.0",
     "urijs": "^1.17.1",
     "validator": "^5.2.0"
   },
