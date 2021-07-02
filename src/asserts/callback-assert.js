@@ -17,7 +17,7 @@ const expression = /^[a-zA-Z]+$/;
  * Export `CallbackAssert`.
  */
 
-module.exports = function(fn, customClass) {
+module.exports = function (fn, customClass) {
   /**
    * Class name.
    */
@@ -42,7 +42,7 @@ module.exports = function(fn, customClass) {
    * Validation algorithm.
    */
 
-  this.validate = function(value) {
+  this.validate = function (value) {
     let result;
 
     try {
