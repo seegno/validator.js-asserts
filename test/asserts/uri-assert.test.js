@@ -106,6 +106,10 @@ describe('UriAssert', () => {
     }
   });
 
+  it('should accept an `is` constraint without a hostname or protocol', () => {
+    Assert.uri({ is: 'relative' }).validate('/dashboard');
+  });
+
   it('should accept an uri that matches the constraints', () => {
     Assert.uri({ is: 'domain' }).validate('https://foobar.com');
     Assert.uri({ protocol: 'https' }).validate('https://foobar.com');

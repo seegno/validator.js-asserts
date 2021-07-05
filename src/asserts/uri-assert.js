@@ -4,6 +4,7 @@
  * Module dependencies.
  */
 
+const _ = require('lodash');
 const { Validator, Violation } = require('validator.js');
 const { forEach, has } = require('lodash');
 
@@ -52,7 +53,7 @@ module.exports = function uriAssert(constraints) {
     const uri = new URI(value);
 
     // URIs must have at least a hostname and protocol.
-    if (!uri.hostname() || !uri.protocol()) {
+    if (_.isEmpty(this.constraints) && (!uri.hostname() || !uri.protocol())) {
       throw new Violation(this, value, { constraints: this.constraints });
     }
 
