@@ -6,17 +6,26 @@
 
 const { Validator, Violation } = require('validator.js');
 const { forEach, has } = require('lodash');
+let URI;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  URI = require('urijs');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `UriAssert`.
  */
 
 module.exports = function uriAssert(constraints) {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const URI = require('urijs');
+  if (!URI) {
+    throw new Error('urijs is not installed');
+  }
 
   /**
    * Class name.

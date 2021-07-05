@@ -7,17 +7,26 @@
 const _ = require('lodash');
 const { Assert: BaseAssert, Violation } = require('validator.js');
 const BigNumberAssert = require('./big-number-assert');
+let BigNumber;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  BigNumber = require('bignumber.js');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `BigNumberGreaterThanAssert`.
  */
 
 module.exports = function bigNumberGreaterThanAssert(threshold, { validateSignificantDigits = true } = {}) {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const BigNumber = require('bignumber.js');
+  if (!BigNumber) {
+    throw new Error('BigNumber is not installed');
+  }
 
   BigNumber.DEBUG = !!validateSignificantDigits;
 

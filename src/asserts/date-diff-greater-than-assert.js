@@ -6,17 +6,26 @@
 
 const { Violation } = require('validator.js');
 const { assign } = require('lodash');
+let moment;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  moment = require('moment');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `DateDiffGreaterThanAssert`.
  */
 
 module.exports = function dateDiffGreaterThanAssert(threshold, options) {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const moment = require('moment');
+  if (!moment) {
+    throw new Error('moment is not installed');
+  }
 
   /**
    * Class name.

@@ -5,17 +5,26 @@
  */
 
 const { Validator, Violation } = require('validator.js');
+let tin;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  tin = require('tin-validator');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `TaxpayerIdentificationNumberAssert`.
  */
 
 module.exports = function taxpayerIdentificationNumberAssert() {
-  /**
-   * Optional peer dependency.
-   */
-
-  const tin = require('tin-validator');
+  if (!tin) {
+    throw new Error('tin-validator is not installed');
+  }
 
   /**
    * Class name.

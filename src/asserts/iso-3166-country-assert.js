@@ -6,17 +6,26 @@
 
 const { Validator, Violation } = require('validator.js');
 const { find } = require('lodash');
+let countries;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  countries = require('isoc');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `Iso3166CountryAssert`.
  */
 
 module.exports = function iso3166CountryAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const countries = require('isoc');
+  if (!countries) {
+    throw new Error('isoc is not installed');
+  }
 
   /**
    * Class name.

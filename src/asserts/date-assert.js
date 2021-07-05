@@ -5,6 +5,17 @@
  */
 
 const { Violation } = require('validator.js');
+let moment;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  moment = require('moment');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `DateAssert`.
@@ -18,17 +29,13 @@ module.exports = function dateAssert({ format } = {}) {
   this.__class__ = 'Date';
 
   /**
-   * Optional peer dependency.
-   */
-
-  let moment;
-
-  /**
    * Validate format.
    */
 
   if (format) {
-    moment = require('moment');
+    if (!moment) {
+      throw new Error('moment is not installed');
+    }
   }
 
   /**

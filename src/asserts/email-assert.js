@@ -5,17 +5,26 @@
  */
 
 const { Assert: is, Validator, Violation } = require('validator.js');
+let validator;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  validator = require('validator');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `EmailAssert`.
  */
 
 module.exports = function emailAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const validator = require('validator');
+  if (!validator) {
+    throw new Error('validator is not installed');
+  }
 
   /**
    * Class name.

@@ -5,17 +5,26 @@
  */
 
 const { Validator, Violation } = require('validator.js');
+let UkModulusChecking;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  UkModulusChecking = require('uk-modulus-checking');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `UkModulusCheckingAssert`.
  */
 
 module.exports = function ukModulusCheckingAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const UkModulusChecking = require('uk-modulus-checking');
+  if (!UkModulusChecking) {
+    throw new Error('uk-modulus-checking is not installed');
+  }
 
   /**
    * Class name.

@@ -5,17 +5,26 @@
  */
 
 const { Validator, Violation } = require('validator.js');
+let abaValidator;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  abaValidator = require('abavalidator');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `AbaRoutingNumberAssert`.
  */
 
 module.exports = function abaRoutingNumberAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const abaValidator = require('abavalidator');
+  if (!abaValidator) {
+    throw new Error('abaValidator is not installed');
+  }
 
   /**
    * Class name.

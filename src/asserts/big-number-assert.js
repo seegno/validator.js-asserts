@@ -5,17 +5,26 @@
  */
 
 const { Violation } = require('validator.js');
+let BigNumber;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  BigNumber = require('bignumber.js');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `BigNumberAssert`.
  */
 
 module.exports = function bigNumberAssert({ validateSignificantDigits = true } = {}) {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const BigNumber = require('bignumber.js');
+  if (!BigNumber) {
+    throw new Error('BigNumber is not installed');
+  }
 
   BigNumber.DEBUG = !!validateSignificantDigits;
 

@@ -5,17 +5,26 @@
  */
 
 const { Validator, Violation } = require('validator.js');
+let PhoneNumberUtil;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  ({ PhoneNumberUtil } = require('google-libphonenumber'));
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `Phone`.
  */
 
 module.exports = function phoneAssert({ countryCode } = {}) {
-  /**
-   * Peer dependency `google-libphonenumber`.
-   */
-
-  const { PhoneNumberUtil } = require('google-libphonenumber');
+  if (!PhoneNumberUtil) {
+    throw new Error('google-libphonenumber is not installed');
+  }
 
   /**
    * Phone util instance.

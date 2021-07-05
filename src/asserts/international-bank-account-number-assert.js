@@ -5,17 +5,26 @@
  */
 
 const { Validator, Violation } = require('validator.js');
+let iban;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  iban = require('iban');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `InternationalBankAccountNumberAssert`.
  */
 
 module.exports = function internationalBankAccountNumberAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const iban = require('iban');
+  if (!iban) {
+    throw new Error('iban is not installed');
+  }
 
   /**
    * Class name.

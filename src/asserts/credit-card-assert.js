@@ -5,17 +5,26 @@
  */
 
 const { Violation } = require('validator.js');
+let creditcard;
+
+/**
+ * Optional peer dependencies.
+ */
+
+try {
+  creditcard = require('creditcard');
+} catch (e) {
+  // eslint-disable-next-line no-empty
+}
 
 /**
  * Export `CreditCardAssert`.
  */
 
 module.exports = function creditCardAssert() {
-  /**
-   * Optional peer dependencies.
-   */
-
-  const creditcard = require('creditcard');
+  if (!creditcard) {
+    throw new Error('creditcard is not installed');
+  }
 
   /**
    * Class name.
